@@ -1,0 +1,100 @@
+/* CSS Document */
+	body,html{
+		margin:0 0 0 0;
+		overflow:hidden hidden;
+/*		cursor: url('img/wa-mouse.png'), default; */
+	}
+
+	*{padding: 0;margin: 0;}
+	.banner{width: 100%;min-width: 1200px;overflow: hidden ; position: relative;}
+	.banner video{width: 100%;position: relative;}
+	.banner div{position: absolute;left: 0;top: 0;width: 100%; padding: 100px 0; }
+	.div-inline{display:inline-block}
+/*	.no_xi{font-size:0}*/
+	.ghost{
+		position:relative;
+		animation:ghostUpdown 1s infinite alternate;
+		-webkit-animation:ghostUpdown 1s infinite alternate;
+	}
+	.ghost div{font-size:0}
+	.ghost img{z-index: 99999;}
+	@keyframes ghostUpdown{
+		from{margin-top:100px;}
+		to{margin-top:70px;}
+	}
+	@-webkit-keyframes ghostUpdown{
+		from{margin-top:100px;}
+		to{margin-top:70px;}
+	}
+	@keyframes shadow{
+		from{margin-top:70px}
+		to{margin-top:100px}
+	}
+	@-webkit-keyframes shadow{
+		from{margin-top:70px}
+		to{margin-top:100px}
+	}
+	.zuo_donghua{
+
+		margin: 650px 0 0 470px;
+
+	}
+	.stone{margin: 250px 0 0 700px; }
+
+	.stone_down{margin-top: 154px;}
+	.nvwa{
+		margin: 200px 0 0 1100px;
+	}
+	.tip{color:aqua;font-size: 40px;font-family:"字魂150号 玉玺手刻体"}
+	 .bubble_opacity{border-radius: 3px;margin:-40px 0 0 20px;font-size:14px;
+	 background-color:rgba(0,0,0,.8);position:relative;
+	}
+	.pop{margin-top:  100px; margin-left:  1400px;width:400px; padding:30px 20px; border:5px  solid #40D355 ; position:relative;
+		border-radius:25px;
+		color:#D88C38;
+		font-family:"字魂150号 玉玺手刻体"
+	}
+	.pop span{width:0; height:0; font-size:0; overflow:hidden; position:absolute;}
+	.pop span.bot{
+		border-width:20px; 
+		border-style:solid dashed dashed; 
+		border-color:#40D355 transparent transparent; 
+		left:80px; 
+		bottom:-40px;
+	}
+	.pop span.top{
+		border-width:20px; 
+		border-style:solid dashed dashed; 
+		border-color:#000000 transparent transparent; 
+		left:80px; 
+		bottom:-33px;
+	}
+	.wenbenkuang{margin: 50px 0 0 700px;  }
+	.wenbenkuang input{border:5px #F7282C}
+
+	.btn_div{position: absolute;left: 0;top: 0;margin: 120px 0 0 950px; }
+	.open_stone_btn{position: absolute;left: 0;top: 0;margin: 330px 0 0 710px;   width: 200px;height: 80px; cursor: url('img/wa-mouse.png'), default;}
+	.form-control { 
+		display: block; 
+		width: 10%; 
+		height: 34px; 
+		padding: 6px 12px; 
+		font-size: 14px; 
+		line-height: 1.428571429; 
+		color: #555555; 
+		vertical-align: middle; 
+		background-color: #ffffff; 
+		border: 1px solid #cccccc; 
+		border-radius: 4px; 
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); 
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); 
+		-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
+		transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
+		} 
+		.form-control:focus { 
+		border-color: #66afe9; 
+		outline: 0; 
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+		} 
+	

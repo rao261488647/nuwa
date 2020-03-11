@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="nuwa:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02b0e62c-0eb2-4c50-b3a5-0ce735114d5e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/software/apache-maven-3.5.0" />
+        <option name="userSettingsFile" value="D:\software\apache-maven-3.5.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XvT4cN2mpJRlanRgNrsvr0qEpN" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/font" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ron.rao" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ron.rao.common" />
+      <recent name="com.ron.rao.business.controller" />
+      <recent name="com.ron.rao.business.dao" />
+      <recent name="com.ron.rao.business.model" />
+      <recent name="com.ron.rao.common.auth" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\git_wp\nuwa\src\main\resources\static\font" />
+      <recent name="D:\workspace\git_wp\nuwa\src\main\resources\mapper\com\ron\business\dao" />
+      <recent name="D:\workspace\git_wp\nuwa\src\main\resources\static\img" />
+      <recent name="D:\workspace\git_wp\nuwa\src\main\java\com\ron\rao" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn compile" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.NuwaApplication">
+    <configuration name="ImageDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ron.rao.nuwa.ImageDemo" />
+      <module name="nuwa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ron.rao.nuwa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ron.rao.nuwa.Test" />
+      <module name="nuwa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ron.rao.nuwa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="nuwa [clean,compile,install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="NuwaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="nuwa" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ron.rao.NuwaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Maven.nuwa [clean,compile,install]" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.ImageDemo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02b0e62c-0eb2-4c50-b3a5-0ce735114d5e" name="Default Changelist" comment="" />
+      <created>1581925377862</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581925377862</updated>
+      <workItem from="1581925382130" duration="1521000" />
+      <workItem from="1581952758274" duration="1795000" />
+      <workItem from="1582012542910" duration="619000" />
+      <workItem from="1582360071472" duration="4434000" />
+      <workItem from="1582687558909" duration="1958000" />
+      <workItem from="1582774783858" duration="69849000" />
+      <workItem from="1583742491972" duration="1208000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="721" y="163" key="#com.intellij.ide.util.MemberChooser" timestamp="1583483948833">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="721" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583483948833" />
+    <state x="660" y="264" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583582167236">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="660" y="264" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583582167236" />
+    <state x="543" y="433" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1582889000926">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="543" y="433" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582889000926" />
+    <state x="708" y="355" width="503" height="342" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582953595540">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="708" y="355" width="503" height="342" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1582953595540" />
+    <state width="486" height="582" key="DebuggerActiveHint" timestamp="1583485761830">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="486" height="582" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1583485761830" />
+    <state x="690" y="219" key="FileChooserDialogImpl" timestamp="1583301466762">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="219" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583301466762" />
+    <state width="1863" height="502" key="GridCell.Tab.0.bottom" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.0.center" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.0.left" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.0.right" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.1.bottom" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.1.center" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.1.left" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.1.right" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.2.bottom" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.2.center" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.2.left" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state width="1863" height="502" key="GridCell.Tab.2.right" timestamp="1583581952583">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="502" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583581952583" />
+    <state x="345" y="0" key="SettingsEditor" timestamp="1583582173552">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="345" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583582173552" />
+    <state x="574" y="184" width="771" height="672" key="find.popup" timestamp="1583587992745">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="574" y="184" width="771" height="672" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583587992745" />
+    <state x="532" y="231" width="840" height="1034" key="run.anything.popup" timestamp="1583301439427">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="532" y="231" width="840" height="1034" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583301439427" />
+    <state x="532" y="-16" width="838" height="1032" key="search.everywhere.popup" timestamp="1583306474948">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="532" y="-16" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583306474948" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/ron/rao/nuwa/Test.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/ron/rao/nuwa/Test.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/ron/rao/nuwa/Test.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ron.rao.business.dao.StoneMapper" >
+  <resultMap id="BaseResultMap" type="com.ron.rao.business.model.Stone" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="STONE_NO" property="stoneNo" jdbcType="VARCHAR" />
+    <result column="TIP_INFO" property="tipInfo" jdbcType="VARCHAR" />
+    <result column="CIPHER_TEXT" property="cipherText" jdbcType="VARCHAR" />
+    <result column="IS_DECODE" property="isDecode" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

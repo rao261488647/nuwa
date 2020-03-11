@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>寻找碎片</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<audio id="music1" controls="controls"  loop preload hidden  >
+		<source src="music/chuanqi.mp3" />
+	</audio>
+	<section class="banner">
+		<video autoplay loop>
+			<source src="video/1.mp4" >
+		</video>
+
+		<div class="">
+			<div class="stone ">
+				<div class="ghost " id="stone_div">
+					<div >
+						<img id="stone1" src="img/n1.png" onMouseOver="find('1')">
+						<img id="stone2" src="img/n2.png" onMouseOver="find('2')">
+					</div>
+					<div class="stone_down " >
+						<img id="stone3" src="img/n3.png" onMouseOver="find('3')">
+						<img id="stone4" src="img/n4.png" onMouseOver="find('4')">
+					</div>	
+				</div>
+
+			</div>
+			<div class="zuo_donghua ">
+				<img src="img/zuo.png">
+			</div>
+
+			<div class="nvwa ">
+				<img  src="img/nvwa.png"  />
+			</div>
+			<section class="pop" id="tip">
+				<span class="bot"></span>
+				<span class="top" ></span>
+				女娲独白
+<!--
+				冒险家，你终于来了，你看到的是我在人间残留的影像，既然能来到这，说明你就是天选之子，神石已经被分割成了几部分，将他们全部集齐后就能知晓其中隐藏的秘密，
+				每块神石碎片都留有线索，那么请开始吧。
+-->
+			</section>
+			<div class="wenbenkuang">
+				<input class="form-control" type="text" id="cipherText" placeholder="输入密文获取神石碎片" />
+				
+			</div>
+
+			<img class="btn_div" id="check_btn" src="img/check.png" >
+
+			<img class="open_stone_btn" id="open_stone_btn" src="img/open_stone.png"  >
+			
+		</div>
+	</section>
+	<input type="hidden" id="tip1" value="神石碎片1提示">
+	<input type="hidden" id="tip2" value="神石碎片2提示">
+	<input type="hidden" id="tip3" value="神石碎片3提示">
+	<input type="hidden" id="tip4" value="神石碎片4提示">
+</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/common.js"></script>
+	<script>
+		var ref;
+		var tip;
+		var openStone;
+		var currnetStone = 0;
+		var lastIndex = 0;
+		var firstPopTime = 15000; //首次pop显示时间，第一次使用之后 会被重置为 1000  也就是10秒
+		var alreadySearchNum = 0;
+		$(document).ready(function() {
+			initStoneInfo();
+			initNuwaTip();
+			initTip();
+			initOpenStone();
+			$("#check_btn").hover(function(){
+
+				$('#check_btn').css("cursor","url('img/wa-mouse.png'), default");
+			},function(){
+
+			});
+			$("#open_stone_btn").hover(function(){
+
+				$('#open_stone_btn').css("cursor","url('img/wa-mouse.png'), default");
+			},function(){
+
+			});
+//			$("#check_btn").mousedown(function(){
+//			 
+//				$("#check_btn").attr("src","img/校验线索按钮-选中.png");
+//			});
+//			$("#check_btn").mouseup(function(){
+//
+//				$("#check_btn").attr("src","img/校验线索按钮.png");
+//
+//			});
+			$("#check_btn").click(function(){
+				checkCipherText();  //校验密文是否正确
+				
+			});
+			ref = setInterval(function(){
+//				console.log("每10秒执行一次");
+				resetPop();
+			},firstPopTime);
+			
+			//延迟1秒播放音乐
+			setTimeout(function() {playMusic();},1000);
+			
+			
+		});
+		function initTip(){
+			tip = new fadeOutFade("tip");  
+			tip.init();  
+			tip.fnShow();
+		}
+		function initOpenStone(){
+			openStone = new fadeOutFade("open_stone_btn");  
+			openStone.init();  
+			openStone.hide();
+		}
+		function checkCipherText(){
+			var cipherText = $("#cipherText").val();
+			if(cipherText == ""){
+				showNuwaTip("密文必须要输入哦！");
+				return false;
+			}
+			$.ajax({
+				url:'http://rain.paradise0932.com:7001/stone/check',//地址
+				dataType:'json',//数据类型
+				type:'POST',//类型
+				data:{"cipherText":cipherText},
+				//timeout:2000,//超时
+				//请求成功
+				success:function(data,status){
+					var content = data.msg;
+					if(data.code == "1"){
+						var stone = JSON.parse(data.data);
+//
+						$("#stone"+stone.id).attr("src","img/r"+stone.id+".png");
+						alreadySearchNum += 1;
+						console.log("alreadySearchNum==="+alreadySearchNum);
+						if(alreadySearchNum == 4){
+							success();
+						}else{
+							showNuwaTip(content);
+						}
+						
+					}else{
+						showNuwaTip(content);
+					}
+					
+					
+
+				},
+				//失败/超时
+				error:function(XMLHttpRequest,textStatus,errorThrown){
+					if(textStatus==='timeout'){
+						alert('請求超時');
+						setTimeout(function(){
+							alert('重新请求');
+						},2000);
+					}
+					//alert(errorThrown);
+				}
+			});
+		}
+		
+		function success(){
+			clearInterval(ref); //清楚女娲独白的随机播放
+			content = "冒险家，恭喜你！ 你已经集齐了所有的神石碎片，快将神石打开，看看里面藏着的秘密吧！"
+			showNuwaTip(content);
+			$("#open_stone_btn").click(function(){
+				window.location.href='lotto.html';
+
+			});
+			openStone.fnShow();
+		}
+		
+		/**
+		* 每隔一段时间，去刷新对话框
+		*/
+		function resetPop(){
+			var content = "<span class='bot'></span><span class='top' ></span>";
+			var textStr = ["鼠标放到神石碎片上，即可获得线索哦！",
+						  "加油！冒险家，你已经集齐"+alreadySearchNum+"块碎片了，马上就要成功了！",
+						  "我在沙滩画个圆圈，属于我俩安逸世界，不用和别人连线。",
+						  "我爱你!!！",
+						  "每条线索都与你息息相关，要用心思考哦！",
+						  "三月是个好季节呢，草长莺飞，我们可以去春游了哦。",
+						  "！！！！"];
+			var index = randomNum(0,textStr.length-1);
+			while (index == lastIndex) {
+				index = randomNum(0,textStr.length-1);
+				
+			}
+//			if(index == lastIndex){
+//				index = randomNum(0,textStr.length-1);
+//				
+//			}
+			console.log("index---"+index);
+			content += textStr[index];
+			showNuwaTip(content);
+			lastIndex = index;
+			firstPopTime = 10000;  // 仅首次 pop停留20秒， 之后就变为10秒
+		}
+		function playMusic() {
+			var player = $("#music1")[0]; /*jquery对象转换成js对象*/
+			if (player.paused){ /*如果已经暂停*/
+				player.play(); /*播放*/
+			}else {
+				player.pause();/*暂停*/
+			}
+		}
+		function find(no){
+			var tip1 = $("#tip1").val();
+			var tip2 = $("#tip2").val();
+			var tip3 = $("#tip3").val();
+			var tip4 = $("#tip4").val();
+			var content = "<span class='bot'></span><span class='top' ></span>";
+			$('#stone'+no).css("cursor","url('img/wa-mouse.png'), default");
+			if(currnetStone != no){
+				var tip = $("#tip"+no).val();
+
+				content += tip;
+				showNuwaTip(content);
+			}
+			
+			currnetStone = no;
+		}
+		function showNuwaTip(content){
+			$("#tip").html(content);
+			tip.hide();
+			tip.fnShow();
+
+		}
+		//生成从minNum到maxNum的随机数
+		function randomNum(minNum, maxNum) {
+		  switch (arguments.length) {
+			case 1:
+			  return parseInt(Math.random() * minNum + 1, 10);
+			  break;
+			case 2:
+			  return parseInt(Math.random() * ( maxNum - minNum + 1 ) + minNum, 10);
+
+			  break;
+			default:
+			  return 0;
+			  break;
+		  }
+		}
+		//初始化女娲要说的话
+		function initNuwaTip(){
+			$.ajax({
+				url:'http://rain.paradise0932.com:7001/basic/index',//地址
+				dataType:'json',//数据类型
+				type:'GET',//类型
+				//timeout:2000,//超时
+				//请求成功
+				success:function(data,status){
+					if(data.code == "1"){
+						if(alreadySearchNum != 4){
+							var da = JSON.parse(data.data);
+							$("#tip").html(da.nuwaTip);
+						}
+						
+					}
+
+				},
+				//失败/超时
+				error:function(XMLHttpRequest,textStatus,errorThrown){
+					if(textStatus==='timeout'){
+						alert('請求超時');
+						setTimeout(function(){
+							alert('重新请求');
+						},2000);
+					}
+
+				}
+			});
+
+		}
+		//初始化神石碎片信息
+		function initStoneInfo(){
+			$.ajax({
+				url:'http://rain.paradise0932.com:7001/stone/index',//地址
+				dataType:'json',//数据类型
+				type:'GET',//类型
+				//timeout:2000,//超时
+				//请求成功
+				success:function(data,status){
+					if(data.code == "1"){
+						var stoneList = JSON.parse(data.data);
+
+
+						var html = "";
+						var stoneHtml = "<div>"
+						for(var i = 0;i<stoneList.length;i++){
+							var stone = stoneList[i];
+							var imgPre = "n";
+							var num = i+1;
+							//是否破译，已破译 应该展示集齐后的碎片图片
+							if(stone.isDecode == "1"){
+								imgPre = "r";
+								alreadySearchNum += 1;
+								console.log("alreadySearchNum--"+alreadySearchNum);
+							}
+							var imgSrc = "img/"+imgPre+num+".png"; //拼接后图片地址
+							
+							if(i != 2){
+								stoneHtml += "<img id=\"stone"+num+"\" src=\""+imgSrc+"\" onMouseOver=\"find('"+num+"')\">";
+							}else{
+								stoneHtml += "</div>" +
+								  				"<div class=\"stone_down \" >";
+								stoneHtml += "<img id=\"stone"+num+"\" src=\""+imgSrc+"\" onMouseOver=\"find('"+num+"')\">";
+
+						  	}
+//							console.log("info---"+stone.tipInfo);
+							$("#tip"+num).val(stone.tipInfo);
+							
+							html += "<tr>" +
+							"<td class=\"highlight\">" +
+							"<div class=\"success\"></div>" +
+							"<a href=\"javascript:;\"> "+ stone.stoneNo +" </a>" +
+							"</td>" +
+							"<td class=\"hidden-xs\"> "+ stone.tipInfo +" </td>" +
+							"<td> "+ stone.cipherText +" </td>" +
+							"<td> "+ stone.isDecode +" </td>" +
+							"<td>" +
+							"<a href=\"javascript:;\" class=\"btn btn-outline btn-circle btn-sm purple\">" +
+							"<i class=\"fa fa-edit\"></i> 编辑 </a>" +
+							"</td>" +
+							"</tr>"
+							
+						}
+						if(alreadySearchNum == 4){
+							success();
+						}
+						stoneHtml += "</div>"
+//						console.log("stone-html0-00--"+stoneHtml);
+						$("#stone_div").html(stoneHtml);
+
+					}
+				},
+				//失败/超时
+				error:function(XMLHttpRequest,textStatus,errorThrown){
+					if(textStatus==='timeout'){
+						alert('請求超時');
+						setTimeout(function(){
+							alert('重新请求');
+						},2000);
+					}
+
+				}
+			});
+
+		}
+		
+	</script>
+</html>

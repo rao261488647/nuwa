@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>幸运大抽奖</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="css/components-rounded.min.css" rel="stylesheet" type="text/css">
+	  <style>
+		body,html{
+			margin:0 0 0 0;
+			overflow:hidden hidden;
+	/*		cursor: url('img/wa-mouse.png'), default; */
+		}
+		  body{
+			  background-image: url("img/lotto_bg.jpg");
+			  background-size: 100%;
+		  }
+
+		*{padding: 0;margin: 0;}
+        .scratchpad{
+          width: 300px;
+          height: 100px;
+          border: solid 1px;
+			margin: 50px 0px 0px 0px;
+        }
+
+        @media (max-width: 500px) {
+          .scratchpad {
+            width: 65%;
+          }
+
+        }
+		  .content{margin: 100px 0px 0px 800px;position: absolute; }
+		  .prize{margin: 100px 0px 0px 1400px;}
+		  section p{text-align: center}
+		  .h2{text-align: center;color:azure; font-size: 50px;}
+		  .prize .myPrize{margin-top: 10px;  font-family: "字魂150号 玉玺手刻体"; font-size: 25px;color: aquamarine}
+		  .ps{color:#DFDFDF;}
+		  .button{text-align: center;display: none}
+		  .caidan{margin: 200px 0px 0px 0px; text-align: center;display: none;}
+		  .caidan img{cursor: url('img/wa-mouse.png'), default;}
+		  .dan_tip{font-family: "汉仪晓波折纸体简"; font-size: 25px; color:#9F00FC}
+      </style>
+</head>
+<body>
+	<audio id="music1" controls="controls"  loop preload hidden  >
+		<source src="music/kaijiang.mp3" />
+	</audio>
+	<section class="content">
+		<div id="congratulation" style="display: none"><p class="h2" >恭喜你，中奖了！</p></div>
+		<div id="demo2" class="scratchpad"></div>
+<!--		<div id="demo2-percent">&nbsp;</div>-->
+		<p id="countDown">您还有3次刮奖机会哦</p>
+		<div class="button"><button type="button" class="btn yellow" onClick="again()">再次刮奖</button></div>
+
+	</section>
+	<div class="prize">
+		<p><h1>已获得奖品<h1></p>
+		<p><h3 class="ps">（请及时领奖哦）<h3></p>
+		<hr>
+		<p id="myPrize" class="myPrize"></p>
+		
+	</div>
+  	<div class="caidan">
+		<img src="img/caidan1.gif"  onClick="window.location.href='photo.html'">
+		<p class="dan_tip">恭喜你，发现了传说中的彩蛋，快打开看看吧！！！</p>
+	</div>
+ <script src="js/jquery.min.js"></script>
+ <script type="text/javascript" src="js/wScratchPad.min.js"></script>
+  <script type="text/javascript">
+	var lottoNum = 0;
+	var isPrize = 0;
+	var lottoPrize = ""; //奖品名称 
+	var id;
+	var basicId;
+	var lottoImg;
+	$(document).ready(function() {
+		initInfo(true,true);
+		
+		//延迟1秒播放音乐
+		setTimeout(function() {playMusic();},1000);
+
+	});
+	  
+	  //初始化信息
+	  function initInfo(ifUpdatePrize,isGua){
+		  $.ajax({
+			url:'http://rain.paradise0932.com:7001/lotto/info',//地址
+			dataType:'json',//数据类型
+			type:'GET',//类型
+			data:{},
+			//timeout:2000,//超时
+			//请求成功
+			success:function(data,status){
+				var content = data.msg;
+				
+				if(data.config){
+					var config = JSON.parse(data.config);
+					lottoNum = config.lottoNum;
+					basicId = config.id;
+					$("#countDown").html("您还有"+lottoNum+"次刮奖机会哦");
+					
+					
+					if(lottoNum == 0){
+						$('#demo2').wScratchPad('enable', false);
+						$(".caidan").show();
+					}
+				}
+				
+				if(data.prizeList){
+					var prizeList = JSON.parse(data.prizeList);
+					//是否更新中奖信息
+					if(ifUpdatePrize){
+						for(var i = 0;i<prizeList.length;i++){
+							$("#myPrize").after("<p  class=\"myPrize\">"+prizeList[i].lottoPrize+"</p>");
+						}
+					}
+					
+				
+				}
+				getNoPrizeInfo(isGua);
+				
+			},
+			//失败/超时
+			error:function(XMLHttpRequest,textStatus,errorThrown){
+				if(textStatus==='timeout'){
+					alert('請求超時');
+					setTimeout(function(){
+						alert('重新请求');
+					},2000);
+				}
+				//alert(errorThrown);
+			}
+		});
+	  }
+	  	function playMusic() {
+			var player = $("#music1")[0]; /*jquery对象转换成js对象*/
+			if (player.paused){ /*如果已经暂停*/
+				player.play(); /*播放*/
+			}else {
+				player.pause();/*暂停*/
+			}
+		}
+	  function getNoPrizeInfo(isGua){
+		   console.log("获取奖品信息方法被调用！");
+		  $.ajax({
+			url:'http://rain.paradise0932.com:7001/lotto/item',//地址
+			dataType:'json',//数据类型
+			type:'GET',//类型
+			data:{},
+			//timeout:2000,//超时
+			//请求成功
+			success:function(data,status){
+				var content = data.msg;
+				if(data.data ){
+					var lotto = JSON.parse(data.data);
+					lottoPrize = lotto.lottoPrize;
+					id = lotto.id;
+					lottoImg = "http://rain.paradise0932.com/upload/"+lottoPrize+".png";
+					console.log("获取奖品信息方法---，获取到奖品图片地址："+lottoImg);
+					//是否初始化刮刮卡，因为只有第一次加载需要使用， 后面只需要替换图片地址
+					if(isGua){
+						initGua();
+					}else{
+						//不初始化刮刮卡，那么就替换图片，重置刮刮卡
+					  	console.log("---更新刮刮卡");
+						$('#demo2').wScratchPad('bg',lottoImg );  
+						$('#demo2').wScratchPad('reset');  
+					}
+					
+				}
+				
+			},
+			//失败/超时
+			error:function(XMLHttpRequest,textStatus,errorThrown){
+				if(textStatus==='timeout'){
+					alert('請求超時');
+					setTimeout(function(){
+						alert('重新请求');
+					},2000);
+				}
+				//alert(errorThrown);
+			}
+		});
+		  
+	  }
+	  function initGua(){
+		  console.log("初始化刮刮卡方法被调用！");
+		  console.log("初始化刮刮卡方法被调用,获取图片地址：---"+lottoImg);
+		  	$('#demo2').wScratchPad({
+			  bg: lottoImg,
+			  fg: '#E0E0E0',
+			  'cursor': 'url("./cursors/coin.png") 5 5, default',
+			  scratchMove: function (e, percent) {
+		//		$('#demo2-percent').html(percent);
+
+				if (percent > 30) {
+					if(isPrize == 0){
+						  this.clear();
+						$("#congratulation").show();
+
+						$("#myPrize").after("<p  class=\"myPrize\">"+lottoPrize+"</p>");
+						countDown();
+						updateLotto(); //更新
+
+						isPrize = 1;
+						if(lottoNum >0){
+							$(".button").show();
+						}else{
+							$(".caidan").show();
+						}
+
+					}
+				}
+			  }
+		 });
+	  }
+	   //更新
+	  function updateLotto(){
+		  $.ajax({
+			url:'http://rain.paradise0932.com:7001/lotto/save',//地址
+			dataType:'json',//数据类型
+			type:'POST',//类型
+			data:{"id":id,"status":"1","basicId":basicId},
+			//timeout:2000,//超时
+			//请求成功
+			success:function(data,status){
+				var content = data.msg;
+				if(data.code == "1"){
+					
+					
+				}
+	
+
+
+			},
+			//失败/超时
+			error:function(XMLHttpRequest,textStatus,errorThrown){
+				if(textStatus==='timeout'){
+					alert('請求超時');
+					setTimeout(function(){
+						alert('重新请求');
+					},2000);
+				}
+				//alert(errorThrown);
+			}
+		});
+	  }
+	  
+	  
+	  function again(){
+		  if(lottoNum >0){
+			 
+			  initInfo(false,false);
+
+			  isPrize = 0;
+			 
+			  $(".button").hide();
+			  $("#congratulation").hide();
+		  }
+		  
+		  
+	  }
+	  
+	 function countDown(){
+		 if(lottoNum != 0){
+			lottoNum = lottoNum-1;
+
+		 	$("#countDown").html("您还有"+lottoNum+"次刮奖机会哦");
+		 }
+		
+	 }
+  </script>
+
+</body>
+</html>
